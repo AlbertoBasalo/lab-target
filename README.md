@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
 
+### Build and publish (link) and consume (link) the library
+
+```bash
+# "publish": "npm run build && cd dist/lab-ui && npm link",
+npm run publish
+# list global npm links
+npm ls -g --depth=0
+# target the global npm link
+cd ..
+ng new lab-target --minimal
+cd lab-target
+npm link lab-ui
+# build.options: preserveSymlinks: true
+ng config projects.lab-target.architect.build.options.preserveSymlinks true
+npm start
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
