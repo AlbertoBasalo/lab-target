@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "start:prod": "npm run build && npx http-server ./dist/lab-target/browser -p 8080",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,
