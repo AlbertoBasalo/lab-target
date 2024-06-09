@@ -1,21 +1,31 @@
 # LabTarget
 
+```bash
+git clone https://github.com/AlbertoBasalo/lab-target
+cd lab-target
+npm install
+npm start
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
 
-### Build and publish (link) and consume (link) the library
+### Generate the application
+
+## Generate the application
 
 ```bash
-# "publish": "npm run build && cd dist/lab-ui && npm link",
-npm run publish
-# list global npm links
-npm ls -g --depth=0
-# target the global npm link
-cd ..
 ng new lab-target --minimal
+```
+
+### Consume (link) the library
+
+```bash
+# target the global npm link
 cd lab-target
 npm link lab-ui
+npm link lab-srv
+npm link lab-core
 # build.options: preserveSymlinks: true
-ng config projects.lab-target.architect.build.options.preserveSymlinks true
 npm start
 ```
 
@@ -42,3 +52,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+```
+
+```
