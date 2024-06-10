@@ -1,6 +1,6 @@
 import { AsyncPipe, JsonPipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { LocationComponent } from "lab-ui";
+import { LocationComponent } from "@lab/ui";
 import { AppService } from "./app.service";
 @Component({
   selector: "app-root",
