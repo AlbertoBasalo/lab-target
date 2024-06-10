@@ -1,5 +1,5 @@
 import { Injectable, inject } from "@angular/core";
-import { CrudRepository } from "lab-srv";
+import { CrudRepository } from "@lab/srv";
 import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root",

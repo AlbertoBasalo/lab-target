@@ -4,11 +4,11 @@
   "version": "18.0.0",
   "scripts": {
     "ng": "ng",
+    "link": "npm link @lab/ui @lab/srv @lab/core",
     "start": "ng serve",
     "start:prod": "npm run build && npx http-server ./dist/lab-target/browser -p 8080",
     "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development",
-    "link": "npm link @lab/ui lab-srv lab-core"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
