@@ -7,25 +7,23 @@ import { AppService } from "./app.service";
   imports: [LocationComponent, DateComponent],
   template: `
     <h1>Welcome to {{ title }}!</h1>
+    @if(activities(); as activities){
     <section>
-      @if(activities(); as activities){
-      <ul>
-        @for(activity of activities; track activity.id){
-        <li>
-          <span>
-            <a href="">{{ activity.name }}</a>
-          </span>
-          <lab-ui-location [value]="activity.location" />
-          <lab-ui-date [value]="activity.date" />
-        </li>
-        } @empty {
-        <li>No activities found</li>
-        }
-      </ul>
-      }@else {
-      <p>Loading...</p>
+      @for(activity of activities; track activity.id){
+      <p>
+        <span>
+          <a href="">{{ activity.name }}</a>
+        </span>
+        <lab-ui-location [value]="activity.location" />
+        <lab-ui-date [value]="activity.date" />
+      </p>
+      } @empty {
+      <li>No activities found</li>
       }
     </section>
+    }@else {
+    <p>Loading...</p>
+    }
   `,
 })
 export class AppComponent {
