@@ -1,27 +1,29 @@
-import { AsyncPipe } from "@angular/common";
-import { Component, inject } from "@angular/core";
-import { LocationComponent } from "@lab/ui";
-import { Observable } from "rxjs";
+import { Component, Signal, inject } from "@angular/core";
+import { DateComponent, LocationComponent } from "@lab/ui";
 import { AppService } from "./app.service";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [LocationComponent, AsyncPipe],
+  imports: [LocationComponent, DateComponent],
   template: `
     <h1>Welcome to {{ title }}!</h1>
     <section>
-      <!-- @let activities = activities$ | async; -->
-      @if( activities$ | async; as activities){
+      @if(activities(); as activities){
       <ul>
-        @for(activity of activities; track activity){
+        @for(activity of activities; track activity.id){
         <li>
           <span>
             <a href="">{{ activity.name }}</a>
           </span>
           <lab-ui-location [value]="activity.location" />
+          <lab-ui-date [value]="activity.date" />
         </li>
+        } @empty {
+        <li>No activities found</li>
         }
       </ul>
+      }@else {
+      <p>Loading...</p>
       }
     </section>
   `,
@@ -29,5 +31,5 @@ import { AppService } from "./app.service";
 export class AppComponent {
   title = "lab-target";
   #service: AppService = inject(AppService);
-  activities$: Observable<any[]> = this.#service.getActivities$();
+  activities: Signal<any[]> = this.#service.activities;
 }
