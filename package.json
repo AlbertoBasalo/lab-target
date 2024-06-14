@@ -4,11 +4,12 @@
   "version": "18.0.0",
   "scripts": {
     "ng": "ng",
-    "link": "npm link @lab/ui @lab/srv @lab/core",
+    "link": "npm link --save @lab/ui @lab/srv @lab/core",
     "start": "ng serve",
     "start:prod": "npm run build && npx http-server ./dist/lab-target/browser -p 8080",
     "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "postinstall": "node node_modules/@angular-architects/native-federation/src/patch-angular-build.js"
   },
   "private": true,
   "dependencies": {
@@ -20,11 +21,16 @@
     "@angular/platform-browser": "^18.0.2",
     "@angular/platform-browser-dynamic": "^18.0.2",
     "@angular/router": "^18.0.2",
+    "@lab/core": "file:../ws-core/dist/lab-core",
+    "@lab/srv": "file:../ws-srv/dist/lab-srv",
+    "@lab/ui": "file:../ws-ui/dist/lab-ui",
+    "es-module-shims": "^1.5.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
+    "@angular-architects/native-federation": "^18.0.2",
     "@angular-devkit/build-angular": "^18.0.3",
     "@angular/cli": "^18.0.3",
     "@angular/compiler-cli": "^18.0.2",
